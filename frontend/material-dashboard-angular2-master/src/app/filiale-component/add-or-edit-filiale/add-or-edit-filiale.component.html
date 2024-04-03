@@ -1,0 +1,29 @@
+<div class="mx-auto">
+    <form [formGroup]="FilialeService.formFiliales" autocomplete="off" (ngSubmit)="onSubmit()">
+      <div class="card-body">
+   
+          <input formControlName="IdFiliale" class="form-control" type="hidden">
+          <div class="form-group">
+  
+            <label class="text-dark">Libellé Filiale</label>
+            <div class="input-group">
+              <div class="input-group-prepend"> 
+                <span class="input-group-text bg-primary" *ngIf="FilialeService.formFiliales.controls.IdFiliale.value=='00000000-0000-0000-0000-000000000000'" >
+                  <i class="far fa-comment-alt text-white"></i></span>
+                   <span class="input-group-text bg-warning" *ngIf="FilialeService.formFiliales.controls.IdFiliale.value!='00000000-0000-0000-0000-000000000000'" >
+                   <i class="far fa-comment-alt text-white"></i></span>
+              </div>
+              <input type="text" class="form-control" formControlName="FilialeLabel" placeholder="saisir libellé Filiale"
+                [class.is-invalid]="FilialeService.formFiliales.controls.Labelle.errors?.required && 
+            FilialeService.formFiliales.controls.Labelle.touched">
+            </div>
+          </div> 
+          
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" *ngIf="FilialeService.formFiliales.controls.IdFiliale.value=='00000000-0000-0000-0000-000000000000'">
+          Enregistrer</button>
+          <button type="submit" class="btn btn-warning" *ngIf="FilialeService.formFiliales.controls.IdFiliale.value!='00000000-0000-0000-0000-000000000000'">
+            Modifier</button>
+        <button type="button" class="btn btn-light" data-dismiss="modal">Réinitialiser</button>
+      </div>
+</div>

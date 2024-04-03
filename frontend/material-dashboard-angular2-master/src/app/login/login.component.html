@@ -1,0 +1,14 @@
+<form class="form-signin" #logingForm="ngForm" (ngSubmit)="login(logingForm)">
+  <div class="container-fluid">
+    <h2 class="form-singnin-heading">Login</h2>
+    <div *ngIf="invalideLogin" class="alert alert-danger">Invalid CIN or password</div>
+    <br>
+    <label for="cin" class="sr_only">CIN</label>
+    <input type="text" id="cin" name="cin" ngModel class="form-control" placeholder="cin" required autofocus>
+    <br>
+    <label for="password" class="sr_only">Password</label>
+    <input type="motdepasse" id="motdepasse" name="motdepasse" ngModel class="form-control" placeholder="motdepasse" required >
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+  </div>
+</form>

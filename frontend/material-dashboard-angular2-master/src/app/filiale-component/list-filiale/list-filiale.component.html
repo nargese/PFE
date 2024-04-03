@@ -1,0 +1,64 @@
+<div class="mx-auto" style="margin-top: 20px;">   
+    <div class="card card-primary">
+      <div class="card-header">
+        <h4 class="card-title text-uppercase  text-sm">
+          <i class="fas fa-bezier-curve"></i> Liste des Filiales</h4>
+        <div class="card-header-action">
+          <button class="btn btn-outline-primary btn-sm" (click)="onAddFilialeModal()"
+          data-toggle="modal" data-target="#AjoutOuModificationFilialeModal">
+              <i class="fas fa-plus-circle" ></i> Ajouter Filiale</button>
+        </div>
+      </div>
+      <div class="">
+    <table class="table">
+      <thead class="text-xs bg-light shadow-sm">
+        <tr>
+          <th>Filiale</th>
+          <th>Atelier</th>
+          <th>Station</th>
+        </tr>
+      </thead>
+        <tbody>
+        <tr *ngFor="let item of FilialeService.ListeFiliales | paginate: { itemsPerPage :10, currentPage: p , id: 'first' }">
+          <td>{{item.labelle}}</td>
+            <td style="width: 150px;">
+              <div class="btn-group">
+                <button class="btn btn-sm btn-default" (click)="onUpdateFiliale(item)" data-toggle="modal" data-target="#AjoutOuModificationFilialeModal">
+                  <i class="fas fa-pen text-primary"></i></button>
+                <button class="btn btn-sm btn-default" (click)="onDeleteFiliale(item.IdFiliale)">
+                  <i class="fa fa-trash text-danger"></i></button>
+              </div>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+      <pagination-controls class="text-center" (pageChange)="p = $event" id="first"
+      previousLabel="Préc" nextLabel="Suiv"></pagination-controls>
+   </div>
+  <!-- Add or edit Filiale modal  --> 
+  <div class="modal fade" id="AjoutOuModificationFilialeModal" tabindex="-1" role="dialog" aria-labelledby="AjoutOuModificationFilialeModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="AjoutOuModificationFilialeModalTitle" class="text-dark"
+        *ngIf="FilialeService.formFiliales.controls.IdFiliale.value=='00000000-0000-0000-0000-000000000000'">
+        <i class="fas fa-plus-circle" ></i> Ajouter Filiale</h5>
+        <h5 class="modal-title" id="AjoutOuModificationFilialeModalTitle" class="text-dark"
+        *ngIf="FilialeService.formFiliales.controls.IdFiliale.value!='00000000-0000-0000-0000-000000000000'">
+        <i class="fas fa-pen text-primary"></i> Modifier Filiale</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+   
+      
+  
+     </div>
+  </div>
+  </div> 
+
+</div>
+</div> 
+
+
